@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('css/css.css') }}">
     <title>@yield('title', 'Sistema Empresarial')</title>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <!-- Fuente de AdminLTE -->
@@ -76,7 +77,7 @@
                             class="nav-link"
                         >
                             <i class="bi bi-person-plus me-1"></i>
-                            Registro
+                            Registro2
                         </a>
                     </li>
                 @else
@@ -113,60 +114,7 @@
         </div>
     </nav>
     <!-- Sidebar -->
-    <aside class="app-sidebar bg-body-secondary shadow">
-    <div class="sidebar-brand">
-        <a
-            href="{{ route('inicio') }}"
-            class="brand-link"
-        >
-            <span class="brand-text fw-light">
-                Mi Empresa
-            </span>
-        </a>
-    </div>
-    <div class="sidebar-wrapper">
-        <nav class="mt-2">
-            <ul
-                class="nav sidebar-menu flex-column"
-                data-lte-toggle="treeview"
-                role="menu"
-            >
-                <li class="nav-header">
-                    MENÚ PRINCIPAL
-                </li>
-                <li class="nav-item">
-                    <a
-                        href="{{ route('inicio') }}"
-                        class="nav-link"
-                    >
-                        <i class="nav-icon bi bi-house"></i>
-                        <p>Inicio</p>
-                    </a>
-                </li>
-                @auth
-                    <li class="nav-item">
-                        <a
-                            href="{{ route('home') }}"
-                            class="nav-link"
-                        >
-                            <i class="nav-icon bi bi-speedometer2"></i>
-                            <p>Panel</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a
-                            href="#"
-                            class="nav-link"
-                        >
-                            <i class="nav-icon bi bi-people"></i>
-                            <p>Usuarios</p>
-                        </a>
-                    </li>
-                @endauth
-            </ul>
-        </nav>
-    </div>
-</aside>
+    
     <!-- Contenido -->
     <main class="app-main">
     <!-- Encabezado -->
@@ -175,7 +123,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <h3 class="mb-0">
-                        @yield('header', 'Panel')
+                        @yield('header', 'Sistema de Facturacion y control de Inventarios')
                     </h3>
                 </div>
                 <div class="col-sm-6">
@@ -188,6 +136,7 @@
                         <li class="breadcrumb-item active">
                             @yield('header', 'Panel')
                         </li>
+                        
                     </ol>
                 </div>
             </div>
@@ -199,6 +148,9 @@
             @yield('content')
         </div>
     </div>
+    <div class="container-fluid">
+            @include('usuario.tabla')
+     </div>
 </main>
     <!-- Footer -->
     <footer class="app-footer">
@@ -225,5 +177,25 @@
 <script
     src="{{ asset('adminlte/js/adminlte.js') }}">
 </script>
+@if(session('success'))
+    <div id="notificacion" class="notificacion">
+        {{ session('success') }}
+    </div>
+@endif
+@if(session('success'))
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const notificacion = document.getElementById('notificacion');
+
+        setTimeout(function () {
+            notificacion.classList.add('ocultar');
+
+            setTimeout(function () {
+                notificacion.remove();
+            }, 500);
+        }, 5000);
+    });
+</script>
+@endif
 </body>
 </html>

@@ -109,10 +109,10 @@
     <!--begin::App Wrapper-->
     <div class="app-wrapper">
       <!--begin::Header-->
-    @include('vistas.header')
+    @include('usuario.header')
       <!--end::Header-->
       <!--begin::Sidebar-->
-   @include('vistas.menu')
+   @include('usuario.menu')
       <!--end::Sidebar-->
       <!--begin::App Main-->
       <main class="app-main">
